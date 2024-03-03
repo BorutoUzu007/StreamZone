@@ -1,7 +1,7 @@
 'use client'
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useSidebar } from "@/use-sidebar"
+import { useSidebar } from "@/store/use-sidebar"
 import { usePathname } from "next/navigation"
 import { Skeleton } from "@/components/ui/skeleton"
 import Link from "next/link"

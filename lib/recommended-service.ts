@@ -29,6 +29,15 @@ export const getRecommended = async () => {
                                 }
                             }
                         }
+                    },
+                    {
+                        NOT: {
+                            Blocking: {
+                                some: {
+                                    blockedId: user_id
+                                }
+                            }
+                        }
                     }
                 ]
                 },

@@ -1,5 +1,5 @@
 'use client'
-import { useSidebar } from "@/use-sidebar"
+import { useSidebar } from "@/store/use-sidebar"
 import { User } from "@prisma/client"
 import { UserItem, UserItemSkeleton } from "./userItem"
 

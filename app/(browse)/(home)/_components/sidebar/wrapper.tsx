@@ -1,5 +1,5 @@
 'use client'
-import { useSidebar } from '@/use-sidebar';
+import { useSidebar } from '@/store/use-sidebar';
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils';
 import { ToggleSkeleton } from './toggle';
