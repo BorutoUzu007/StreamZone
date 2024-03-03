@@ -125,7 +125,6 @@ export const getFollowed = async () => {
                 following: true
             }
         })
-
         return followedUsers
     } catch {
         return []

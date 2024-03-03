@@ -2,7 +2,7 @@
 import Hint from '@/components/hint';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useSidebar } from '@/use-sidebar'
+import { useSidebar } from '@/store/use-sidebar'
 import { ArrowLeftFromLine, ArrowRightFromLine } from 'lucide-react';
 import React from 'react'
 

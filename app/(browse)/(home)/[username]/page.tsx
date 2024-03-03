@@ -3,6 +3,7 @@ import { getUserByUsername } from '@/lib/user-service'
 import { notFound } from 'next/navigation'
 import React from 'react'
 import { Actions } from './_components/actions'
+import { isBlockedByUser } from '@/lib/block-service'
 
 interface UserPageProps {
     params: {
@@ -19,6 +20,7 @@ export default async function Username({params}: UserPageProps) {
   }
 
   const isFollowing = await isFollowingUser(user.id);
+  const isBlocking = await isBlockedByUser(user.id)
   // const isFollowing = true
 
   return (
@@ -32,7 +34,10 @@ export default async function Username({params}: UserPageProps) {
         <p>
           Is Following?  {`${isFollowing}`}
         </p>
-        <Actions userId={user.id} isFollowing={isFollowing} />
+        <p>
+          Is Blocking?  {`${isBlocking}`}
+        </p>
+        <Actions userId={user.id} isFollowing={isFollowing} isBlocking={isBlocking} />
     </div>
   )
 }

@@ -1,6 +1,8 @@
 'use client'
 
+import { onBlock } from "@/actions/block"
 import { onFollow } from "@/actions/follow"
+import { onUnBlock } from "@/actions/unblock"
 import { onUnfollow } from "@/actions/unfollow"
 import { Button } from "@/components/ui/button"
 import { useTransition } from "react"
@@ -8,13 +10,14 @@ import { toast } from "sonner"
 
 interface ActionProps {
     isFollowing: boolean
+    isBlocking: boolean
     userId: string
 }
 
-export const Actions = ({isFollowing, userId}: ActionProps) => {
+export const Actions = ({isFollowing, isBlocking, userId}: ActionProps) => {
     const [isPending, startTransition] = useTransition()
     
-    const onClick = () => {
+    const onClickFollow = () => {
         startTransition(() => {
             if (isFollowing) {
                 onUnfollow(userId)
@@ -30,9 +33,31 @@ export const Actions = ({isFollowing, userId}: ActionProps) => {
         
     }
 
+    const onClickBlock = () => {
+        startTransition(() => {
+            if (isBlocking) {
+                onUnBlock(userId)
+                .then((data) => toast.success(`Unblocked the user ${data.blocking.username}`))
+                .catch(() => toast.error("Something went wrong"))
+            }
+            else {
+                onBlock(userId)
+                .then((data) => toast.success(`Blocked the user ${data.blocking.username}`))
+                .catch(() => toast.error("Something went wrong"))
+            }
+        })
+        
+    }
+
     return(
-        <Button disabled={isPending} onClick={onClick} variant='primary'>
-            {isFollowing ? (<span>Unfollow</span>) : (<span>Follow</span>)}
-        </Button>
+        <div className='flex flex-col gap-y-2'>
+            <Button disabled={isPending || isBlocking} onClick={onClickFollow} variant='primary'>
+                {isFollowing ? (<span>Unfollow</span>) : (<span>Follow</span>)}
+            </Button>
+            <Button disabled={isPending} onClick={onClickBlock} variant='secondary'>
+                {isBlocking ? (<span>Unblock</span>) : (<span>Block</span>)}
+            </Button>
+        </div>
+        
     )
 }
