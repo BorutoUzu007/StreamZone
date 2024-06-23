@@ -62,7 +62,6 @@ export const LiveVideo = ({participant} : LiveVideoProps) => {
             }
         })
         
-
     return (
         <div ref={wrapperRef} className="relative h-full flex">
             <video width="100%" ref={videoRef} />
