@@ -17,6 +17,7 @@ export async function POST(req: Request) {
     }
 
     const event = await receiver.receive(body, authorization) 
+    console.log("abcdcc: " + event.event)
     if (event.event === "ingress_ended") {
         await db.stream.update({
             where: {

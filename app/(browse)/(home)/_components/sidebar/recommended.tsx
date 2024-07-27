@@ -12,6 +12,10 @@ interface RecommendedProps {
 export const Recommended = ({data}: RecommendedProps) => {
     const {collapsed} = useSidebar((state) => state)
     const showLabel: boolean = !collapsed && data.length > 0
+    for (var i=0;i<data.length;i++) {
+        console.log(`${data[i].username} = ${data[i].stream?.isLive}`)
+    }
+    
     return(
         <div>
             { showLabel && (
@@ -23,6 +27,7 @@ export const Recommended = ({data}: RecommendedProps) => {
             )}
             <ul className="space-y-2 px-2">
                         {data.map((user) => (
+                            
                             <UserItem 
                                 key={user.id} 
                                 username={user.username}

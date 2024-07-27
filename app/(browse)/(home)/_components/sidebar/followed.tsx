@@ -13,6 +13,9 @@ interface FollowedSidebarProps {
 export const FollowedSidebar = ({data}: FollowedSidebarProps) => {
     const {collapsed} = useSidebar((state) => state)
     const showLabel: boolean = !collapsed && data.length > 0
+    for (var i=0;i<data.length;i++) {
+        console.log(`${data[i].following.username} = ${data[i].following.stream?.isLive}`)
+    }
 
     return(
         <div>
