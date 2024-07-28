@@ -2,7 +2,7 @@
 import { getSelf } from "@/lib/auth-service"
 import { db } from "@/lib/db"
 import {CreateIngressOptions, IngressAudioEncodingPreset, IngressClient, IngressInput, IngressVideoEncodingPreset, RoomServiceClient} from "livekit-server-sdk"
-import { TrackSource } from "livekit-server-sdk/dist/proto/livekit_models_pb"
+import { TrackSource } from "livekit-server-sdk/dist/proto/livekit_models"
 import { revalidatePath } from "next/cache"
 
 const roomService = new RoomServiceClient(
