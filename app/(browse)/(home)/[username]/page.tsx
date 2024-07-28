@@ -21,6 +21,8 @@ export default async function UserPage({params}: UserPageProps) {
 
   const isFollowing = await isFollowingUser(user.id)
   const isBlocked = await isBlockedByUser(user.id)
+  console.log(isBlocked)
+  console.log(isFollowing)
 
   if (isBlocked) {
     notFound()
