@@ -18,11 +18,6 @@ export const ResultCard = ({result}: ResultCardProps) => {
         <Link href={`/${result.user.username}`}>
             <div className="h-full w-full space-y-4">
                 <Thumbnail src={result.thumbnail} fallback={result.user.imageUrl} isLive={result.isLive} username={result.user.username} />
-                {result.isLive && (
-                    <div className="absolute top-2 left-2 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
-                        <LiveBadge />
-                    </div>
-                )}
                 <div className="flex gap-x-3">
                     <UserAvatar 
                         username={result.user.username}
