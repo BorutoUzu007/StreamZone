@@ -1,6 +1,7 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
+import {removesIngresses} from '@/actions/ingress'
 
 import { db } from '@/lib/db'
 
@@ -76,6 +77,8 @@ export async function POST(req: Request) {
   }
 
   else if(eventType === 'user.deleted') {
+
+    await removesIngresses(payload.data.id)
     await db.user.delete({
         where: {
             externamUserId: payload.data.id

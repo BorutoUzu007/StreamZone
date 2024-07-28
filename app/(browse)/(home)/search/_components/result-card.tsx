@@ -1,13 +1,18 @@
 import { VerifiedMark } from '@/components/stream-player/verified-mark'
 import { Thumbnail, ThumbnailSkeleton } from '@/components/thumbnail'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Stream, User } from '@prisma/client'
+import { User } from '@prisma/client'
 import { formatDistanceToNow } from 'date-fns'
 import Link from 'next/link'
 import React from 'react'
 
 interface ResultCardProps {
-    data: Stream & {
+    data: {
+        id: string;
+        name: string;
+        thumbnail: string | null;
+        isLive: boolean;
+        updatedAt: Date
         user: User
     }
 }
