@@ -42,7 +42,7 @@ export const Actions = ({isFollowing, isBlocking, userId}: ActionProps) => {
             }
             else {
                 onBlock(userId)
-                .then((data) => toast.success(`Blocked the user ${data.blocking.username}`))
+                .then((data) => toast.success(`Blocked the user ${data?.blocking.username}`))
                 .catch(() => toast.error("Something went wrong"))
             }
         })
